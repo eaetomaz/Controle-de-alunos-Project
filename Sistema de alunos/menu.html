@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+
+    <script>
+        function confirmarSaida() {
+            var confirmacao = confirm("Tem certeza que deseja sair?");
+            if (confirmacao) {
+                window.location.href = 'logout.php'; // Página ou script para realizar logout
+            }
+        }
+    </script>
+
+</head>
+
+<body>
+
+    <center>
+        <div class="barra-superior">
+            <ul>
+                <li><a href="dashboard.php">Home</a></li>
+                <li><a href="listagem.php">Listagem</a></li>
+                <li><a href="cadastro.php">Cadastro</a></li>
+                <?php
+        session_start();
+        if (isset($_SESSION['id'])) {
+            echo '<li><a href="#" onclick="confirmarSaida()">Sair</a></li>';
+        }
+        ?>
+            </ul>
+        </div>
+    </center>
+
+</body>
+
+</html>
